@@ -9,12 +9,9 @@ export class UpdateFuncionarioDto extends PartialType(CreateFuncionarioDto) {
     @IsString()
     senha: string;
 
-    @IsString()
     endereço: string;
 
-    @IsString()
     meta: string;
-    
-    @IsString()
+
     status: string;
 }

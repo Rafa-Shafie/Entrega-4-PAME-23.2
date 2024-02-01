@@ -1,4 +1,4 @@
-import { IsDate, IsEmail, IsNumber, IsString, isDate } from "class-validator";
+import { IsDate, IsEmail, IsNumber, IsString } from "class-validator";
 
 export class CreateFuncionarioDto {
     @IsString()
@@ -19,12 +19,9 @@ export class CreateFuncionarioDto {
     @IsString()
     genero: string;
 
-    @IsString()
-    endereço: string;
+    endereco: string;
 
-    @IsString()
     meta: string;
-    
-    @IsString()
+
     status: string;
 }

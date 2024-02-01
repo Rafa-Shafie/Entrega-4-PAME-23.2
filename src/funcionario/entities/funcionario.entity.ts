@@ -6,7 +6,7 @@ export class Funcionario {
     aniversario: Date;
     telefone: number;
     genero: string;
-    endereço: string;
+    endereco: string;
     meta: string;
     status: string;
     ID_movel: number; 

@@ -8,7 +8,7 @@ export class FuncionarioService {
 
   constructor(private prisma: PrismaService) {}
   async create(createFuncionarioDto: CreateFuncionarioDto) {
-    return this.prisma.funcionario.create({Data: createFuncionarioDto});
+    return this.prisma.funcionario.create({data: createFuncionarioDto})
   }
 
   findAll() {
@@ -20,7 +20,7 @@ export class FuncionarioService {
   }
 
   update(ID: number, updateFuncionarioDto: UpdateFuncionarioDto) {
-    return this.prisma.funcionario.update({where: {ID}, data: updateFuncionarioDto});
+    return this.prisma.funcionario.update({ where: {ID}, data: updateFuncionarioDto })
   }
 
   remove(ID: number) {

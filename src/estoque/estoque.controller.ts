@@ -1,5 +1,4 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateEstoqueDto } from './dto/create-estoque.dto';
 import { UpdateEstoqueDto } from './dto/update-estoque.dto';
 import { EstoqueService } from './estoque.service';

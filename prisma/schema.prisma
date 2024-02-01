@@ -11,25 +11,25 @@ datasource db {
 }
 
 model funcionario{
-  ID_funcionario Int @id @default(autoincrement())@unique
-  nome_funcionario String
-  email_funcionario String @unique
-  senha_funcionario String @unique
-  aniversario_funcionario DateTime
-  telefone_funcionario Int @unique
-  genero_funcionario String
-  endereco_funcionario String
-  metas_funcionario String
-  status_funcionario String
+  ID Int @id @default(autoincrement())@unique
+  nome String
+  email String @unique
+  senha String @unique
+  aniversario DateTime
+  telefone Int @unique
+  genero String
+  endereco String
+  meta String
+  status String
   PedidoID Int
-  pedido Pedido @relation(fields: [PedidoID], references: [ID])
+  pedido Pedido @relation(fields: [PedidoID], references: [ID_pedido])
   estoques Estoque[]
   MoveisID Int
   moveis Movel @relation(fields: [MoveisID], references: [ID_movel])
 }
 
 model Pedido {
-  ID Int @id @default(autoincrement())@unique
+  ID_pedido Int @id @default(autoincrement())@unique
   status_pedido String
   data_pedido DateTime
   endereco_entrega String
@@ -55,7 +55,7 @@ model Movel {
   data_fabricacao_movel DateTime
   status_movel String
   PedidoID Int
-  pedidos Pedido @relation(fields: [PedidoID], references: [ID])
+  pedidos Pedido @relation(fields: [PedidoID], references: [ID_pedido])
   funcionarios funcionario[]
   estoques Estoque[]
   transportadoras Transportadora[]
@@ -69,7 +69,7 @@ model Estoque {
   total_movel Int
   nome_estoque String
   funcionarioID Int
-  funcionarios funcionario @relation(fields: [funcionarioID], references: [ID_funcionario])
+  funcionarios funcionario @relation(fields: [funcionarioID], references: [ID])
   MoveisID Int
   moveis Movel @relation(fields: [MoveisID], references: [ID_movel])
 }
@@ -79,7 +79,7 @@ model Transportadora {
   Nome_transportadora String
   Status_transportadora String
   PedidoID Int
-  pedidos Pedido @relation(fields: [PedidoID], references: [ID])
+  pedidos Pedido @relation(fields: [PedidoID], references: [ID_pedido])
   MoveisID Int
   moveis Movel @relation(fields: [MoveisID], references: [ID_movel])
 }
