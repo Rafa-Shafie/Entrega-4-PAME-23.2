@@ -10,6 +10,76 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model usuario {
-  id Int @id @default(autoincrement())@unique
+model funcionario{
+  ID_funcionario Int @id @default(autoincrement())@unique
+  nome_funcionario String
+  email_funcionario String @unique
+  senha_funcionario String @unique
+  aniversario_funcionario DateTime
+  telefone_funcionario Int @unique
+  genero_funcionario String
+  endereco_funcionario String
+  metas_funcionario String
+  status_funcionario String
+  PedidoID Int
+  pedido Pedido @relation(fields: [PedidoID], references: [ID])
+  estoques Estoque[]
+  MoveisID Int
+  moveis Movel @relation(fields: [MoveisID], references: [ID_movel])
+}
+
+model Pedido {
+  ID Int @id @default(autoincrement())@unique
+  status_pedido String
+  data_pedido DateTime
+  endereco_entrega String
+  metodo_pagamento String
+  valor Float
+  data_entrega DateTime
+  produtos_pedidos String
+  frete Float?
+  lista_pedido String
+  feedback_cliente String?
+  funcionarios funcionario[]
+  transportadoras Transportadora[]
+  MoveisID Int
+  moveis Movel @relation(fields: [MoveisID], references: [ID_movel])
+}
+
+model Movel {
+  ID_movel Int @id @default(autoincrement())@unique
+  valor_movel Float
+  nome_movel String
+  descricao String
+  tipo_movel String
+  data_atualizacao_movel DateTime
+  data_fabricacao_movel DateTime
+  status_movel String
+  pedidos Pedido[]
+  funcionarios funcionario[]
+  estoques Estoque[]
+  transportadoras Transportadora[]
+}
+
+model Estoque {
+  ID_estoque Int @id @default(autoincrement())@unique
+  total_categoria_movel_estoque Int
+  data_entrada_estoque DateTime
+  historico_estoque DateTime
+  total_movel Int
+  nome_estoque String
+  funcionarioID Int
+  funcionarios funcionario @relation(fields: [funcionarioID], references: [ID_funcionario])
+  MoveisID Int
+  moveis Movel @relation(fields: [MoveisID], references: [ID_movel])
+}
+
+model Transportadora {
+  ID_transportadora Int @id @default(autoincrement())@unique
+  Nome_transportadora String
+  Status_transportadora String
+  PedidoID Int
+  pedidos Pedido @relation(fields: [PedidoID], references: [ID])
+  MoveisID Int
+  moveis Movel @relation(fields: [MoveisID], references: [ID_movel])
 }
