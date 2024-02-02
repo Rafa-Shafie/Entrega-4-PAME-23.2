@@ -4,14 +4,14 @@ import { IsString } from 'class-validator';
 
 export class UpdateFuncionarioDto extends PartialType(CreateFuncionarioDto) {
     @IsString()
-    nome: string;
+    nome_funcionario: string
 
     @IsString()
-    senha: string;
+    senha_funcionario: string
 
-    endereço: string;
+    endereco_funcionario: string
 
-    meta: string;
+    meta_funcionario: string
 
-    status: string;
+    status_funcionario: string
 }

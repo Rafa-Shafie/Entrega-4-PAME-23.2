@@ -8,23 +8,30 @@ export class FuncionarioService {
 
   constructor(private prisma: PrismaService) {}
   async create(createFuncionarioDto: CreateFuncionarioDto) {
-    return this.prisma.funcionario.create({data: createFuncionarioDto})
+    return this.prisma.funcionario.create({data: CreateFuncionarioDto})
   }
+
 
   findAll() {
     return this.prisma.funcionario.findMany();
   }
 
-  findOne(ID: number) {
-    return this.prisma.funcionario.findUnique({where: {ID}});
+  findOne(ID_funcionario: number) {
+    return this.prisma.funcionario.findUnique({where: {ID_funcionario}})
   }
 
-  update(ID: number, updateFuncionarioDto: UpdateFuncionarioDto) {
-    return this.prisma.funcionario.update({ where: {ID}, data: updateFuncionarioDto })
+  findByEmail(email_funcionario: string){
+    return this.prisma.funcionario.findUnique({
+      where: {email_funcionario: email_funcionario}
+    })
   }
 
-  remove(ID: number) {
-    this.prisma.funcionario.delete({where: {ID}});
+  update(ID_funcionario: number, updateFuncionarioDto: UpdateFuncionarioDto) {
+    return this.prisma.funcionario.update({ where: {ID_funcionario}, data: updateFuncionarioDto })
+  }
+
+  remove(ID_funcionario: number) {
+    this.prisma.funcionario.delete({where: {ID_funcionario}});
     return "Usuário deletado com sucesso!"
   }
 }

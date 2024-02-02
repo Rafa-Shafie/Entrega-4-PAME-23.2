@@ -10,22 +10,20 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model funcionario{
+model Funcionario {
   ID Int @id @default(autoincrement())@unique
-  nome String
-  email String @unique
-  senha String @unique
-  aniversario DateTime
-  telefone Int @unique
-  genero String
-  endereco String
-  meta String
-  status String
-  PedidoID Int
-  pedido Pedido @relation(fields: [PedidoID], references: [ID_pedido])
+  nome_funcionario String
+  email_funcionario String @unique
+  senha_funcionario String @unique
+  aniversario_funcionario DateTime
+  telefone_funcionario Int @unique
+  genero_funcionario String
+  endereco_funcionario String
+  meta_funcionario String
+  status_funcionario String
+  pedidos Pedido[]
   estoques Estoque[]
-  MoveisID Int
-  moveis Movel @relation(fields: [MoveisID], references: [ID_movel])
+  moveis Movel[]
 }
 
 model Pedido {
@@ -40,8 +38,10 @@ model Pedido {
   frete Float?
   lista_pedido String
   feedback_cliente String?
-  funcionarios funcionario[]
-  transportadoras Transportadora[]
+  ID_funcionario Int
+  funcionarios Funcionario @relation(fields: [ID_funcionario], references: [ID])
+  TransportadoraID Int
+  transportadoras Transportadora @relation(fields: [TransportadoraID], references: [ID_transportadora])
   moveis Movel[]
 }
 
@@ -56,9 +56,12 @@ model Movel {
   status_movel String
   PedidoID Int
   pedidos Pedido @relation(fields: [PedidoID], references: [ID_pedido])
-  funcionarios funcionario[]
-  estoques Estoque[]
-  transportadoras Transportadora[]
+  ID_funcionario Int
+  funcionarios Funcionario @relation(fields: [ID_funcionario], references: [ID])
+  EstoqueID Int
+  estoques Estoque @relation(fields: [EstoqueID], references: [ID_estoque])
+  TransportadoraID Int
+  transportadora Transportadora @relation(fields: [TransportadoraID], references: [ID_transportadora])
 }
 
 model Estoque {
@@ -68,10 +71,9 @@ model Estoque {
   historico_estoque DateTime
   total_movel Int
   nome_estoque String
-  funcionarioID Int
-  funcionarios funcionario @relation(fields: [funcionarioID], references: [ID])
-  MoveisID Int
-  moveis Movel @relation(fields: [MoveisID], references: [ID_movel])
+  ID_funcionario Int
+  funcionarios Funcionario @relation(fields: [ID_funcionario], references: [ID])
+  moveis Movel[]
 }
 
 model Transportadora {
@@ -79,7 +81,7 @@ model Transportadora {
   Nome_transportadora String
   Status_transportadora String
   PedidoID Int
-  pedidos Pedido @relation(fields: [PedidoID], references: [ID_pedido])
+  pedidos Pedido[]
   MoveisID Int
-  moveis Movel @relation(fields: [MoveisID], references: [ID_movel])
+  moveis Movel[]
 }

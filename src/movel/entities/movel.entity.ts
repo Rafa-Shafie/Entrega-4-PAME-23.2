@@ -4,9 +4,10 @@ export class Movel {
     Nome_movel: string;
     ID_estoque: number;
     Descricao_movel: string;
-    Quantidade_estoque: number;
     Tipo_movel: string;
-    Data_entrada_estoque: Date;
     Status_movel: string;
     Data_fabricacao_movel: Date;
+    ID_transportadora: number;
+    ID_pedido: number;
+    ID: number;
 }

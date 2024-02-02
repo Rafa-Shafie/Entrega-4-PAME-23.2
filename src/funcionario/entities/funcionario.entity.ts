@@ -1,15 +1,21 @@
 export class Funcionario {
     ID: number;
-    nome: string;
-    senha: string;
-    email: string;
-    aniversario: Date;
-    telefone: number;
-    genero: string;
-    endereco: string;
-    meta: string;
-    status: string;
-    ID_movel: number; 
-    ID_pedido: number;
-    Status_pedido: string;
+
+    nome_funcionario: string;
+
+    senha_funcionario: string;
+
+    email_funcionario: string;
+
+    aniversario_funcionario: Date;
+
+    telefone_funcionario: number;
+
+    genero_funcionario: string;
+
+    endereco_funcionario: string;
+
+    meta_funcionario: string;
+    
+    status_funcionario: string;
 }

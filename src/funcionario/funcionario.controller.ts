@@ -2,14 +2,13 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { FuncionarioService } from './funcionario.service';
 import { CreateFuncionarioDto } from './dto/create-funcionario.dto';
 import { UpdateFuncionarioDto } from './dto/update-funcionario.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
 
-@Controller('funcionario')
+@Controller('Funcionario')
 export class FuncionarioController {
   constructor(private readonly funcionarioService: FuncionarioService) {}
 
   @Post()
-  create(@Body() createFuncionarioDto: CreateFuncionarioDto) {
+  create(@Body('id') createFuncionarioDto: CreateFuncionarioDto) {
     return this.funcionarioService.create(createFuncionarioDto);
   }
 
@@ -19,17 +18,17 @@ export class FuncionarioController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.funcionarioService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFuncionarioDto: UpdateFuncionarioDto) {
+  update(@Param('id') id: number, @Body() updateFuncionarioDto: UpdateFuncionarioDto) {
     return this.funcionarioService.update(+id, updateFuncionarioDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Delete(':ID')
+  remove(@Param('id') id: number) {
     return this.funcionarioService.remove(+id);
   }
 }

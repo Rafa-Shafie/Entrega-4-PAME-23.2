@@ -2,26 +2,26 @@ import { IsDate, IsEmail, IsNumber, IsString } from "class-validator";
 
 export class CreateFuncionarioDto {
     @IsString()
-    nome: string;
+    nome_funcionario: string
 
     @IsString()
-    senha: string;
+    senha_funcionario: string
 
     @IsEmail()
-    email: string;
+    email_funcionario: string
 
     @IsDate()
-    aniversario: Date;
+    aniversario_funcionario: Date
 
     @IsNumber()
-    telefone: number;
+    telefone_funcionario: number
 
     @IsString()
-    genero: string;
+    genero_funcionario: string
 
-    endereco: string;
+    endereco_funcionario: string
 
-    meta: string;
+    meta_funcionario: string
 
-    status: string;
+    status_funcionario: string
 }
